@@ -1,0 +1,36 @@
+{% extends 'formsapp/base.html' %}
+
+{% block title %} Contact Page {% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="card">
+		<div class="card-header">
+			<h2>Update Form</h2>
+			
+		</div>
+		<div class="card-body">
+			<form method="POST">
+				{% csrf_token %}
+				<table class="table table-borderless">
+					{% for i in data %}
+					<tr>
+						<td>{{i}}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<input type="submit" value="submit" class="btn btn-outline-warning" name="">
+				<a href="{% url 'profile' %}" class="btn btn-outline-info">Cancel</a>
+			</form>
+				
+			
+		</div>
+		
+	</div>
+	
+	
+</div>
+
+
+{% endblock %}

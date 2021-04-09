@@ -1,0 +1,56 @@
+{% extends 'formsapp/base.html' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+	<div class="card col-lg-5 mt-5 mb-4 mx-auto  border pt-4 rounded">
+		{% if messages %}
+	{% for i in messages %}
+	<div class="alert alert-{{i.tags}} alert-dismissible">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		{{i}}
+		
+	</div>
+	{% endfor %}
+	{% endif %}
+		<div class="card-header bg-secondary">
+			<h2>Update Details</h2>
+			 
+		</div>
+		<form method="POST">
+			{% csrf_token %}
+			<table class="card-body table table-borderless">
+			<tr>
+				<th>FirstName</th>
+				<td>{{request.user.first_name}}</td>
+			</tr>
+			<tr>
+				<th>LastName</th>
+				<td>{{request.user.last_name}}</td>
+			</tr>
+			<tr>
+				<th>Username</th>
+				<td>{{request.user.username}}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{request.user.email}}</td>
+			</tr>
+			<tr>
+				<th>LastLogin</th>
+				<td>{{request.user.last_login}}</td>
+			</tr>
+			
+			
+		</table>
+		<a class="btn btn-outline-success" href="{% url 'uppro' %}">Update</a>
+		</form>
+		
+		
+	</div>
+	
+
+
+
+{% endblock %}

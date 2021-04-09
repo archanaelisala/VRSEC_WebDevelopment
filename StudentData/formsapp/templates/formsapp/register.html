@@ -1,0 +1,29 @@
+{% extends 'formsapp/base.html' %}
+{% block title %}Registration Page{% endblock %}
+
+{% block content %}
+<div class="container">
+	
+	<div class="card">
+		<div class="card-header">
+			<h3>Register Here</h3>
+			
+		</div>
+		<form method="post">
+			{% csrf_token %}
+			<div class="card-body">
+				{{form.as_p}}
+			</div>
+			
+			<div class="card-footer">
+				<input type="submit" value="Register" class="btn btn-outline-warning" name="">
+				
+			</div>
+			
+		</form>
+		
+	</div>
+	
+</div>
+
+{% endblock %}
