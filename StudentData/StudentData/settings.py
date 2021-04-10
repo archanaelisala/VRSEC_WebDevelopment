@@ -115,8 +115,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL='login'
-LOGIN_REDIRECT_URL='dashboard'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
 
 
 # Static files (CSS, JavaScript, Images)

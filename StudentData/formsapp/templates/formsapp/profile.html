@@ -1,55 +1,71 @@
 {% extends 'formsapp/base.html' %}
 
-{% block title %} Profile {% endblock %}
+{% block title %} Profile Page {% endblock %}
 
 {% block content %}
 
-	<div class="card col-lg-5 mt-5 mb-4 mx-auto  border pt-4 rounded">
-		{% if messages %}
-	{% for i in messages %}
-	<div class="alert alert-{{i.tags}} alert-dismissible">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		{{i}}
+<div class="container col-md-8">
+	<div class="card">
 		
-	</div>
-	{% endfor %}
-	{% endif %}
-		<div class="card-header bg-secondary">
-			<h2>Update Details</h2>
-			 
+	
+		<div class="card-header col-lg-4  mb-4  mt-2 mx-auto">
+			<h2 class="bg-primary mt-2 p-2 text-center">Profile Details</h2>
 		</div>
-		<form method="POST">
+		<div class="card-body">
+		<form class="POST">
 			{% csrf_token %}
-			<table class="card-body table table-borderless">
+			<table class="  table table-borderless">
+
+				
 			<tr>
 				<th>FirstName</th>
-				<td>{{request.user.first_name}}</td>
+				<td><strong>{{request.user.first_name}}</strong></td>
 			</tr>
+			
 			<tr>
 				<th>LastName</th>
 				<td>{{request.user.last_name}}</td>
 			</tr>
 			<tr>
 				<th>Username</th>
-				<td>{{request.user.username}}</td>
+				<td><strong>{{request.user.username}}</strong></td>
 			</tr>
 			<tr>
-				<th>Email</th>
+				<th>email</th>
 				<td>{{request.user.email}}</td>
 			</tr>
 			<tr>
 				<th>LastLogin</th>
 				<td>{{request.user.last_login}}</td>
 			</tr>
-			
-			
-		</table>
-		<a class="btn btn-outline-success" href="{% url 'uppro' %}">Update</a>
+			<tr>
+				<th>Date Of Joining</th>
+				<td>{{request.user.date_joined}}</td>
+			</tr>
+			</table>
+			<a href="{% url 'updatepro' %}" class="btn btn-outline-warning">Update</a>	
 		</form>
+</div>
+	</div>
+	</div>
+	
+</div>
+
+
+
+<!-- <div class=" p-4 m-4"> 
+	
+
+	<div class="card col-lg-4  mb-4  mt-2 mx-auto">
+		<h2 class="bg-primary mt-2 p-2 text-center">Profile Details</h2>
+		
+			
+		</div>
 		
 		
 	</div>
 	
+</div>	 -->
 
 
 

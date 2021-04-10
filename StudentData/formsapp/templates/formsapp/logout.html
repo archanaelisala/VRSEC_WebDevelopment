@@ -1,12 +1,24 @@
 {% extends 'formsapp/base.html' %}
-{% block titile %} Logout {% endblock %}
+
+{% block title%} Logout Page {% endblock %}
+
+
 {% block content %}
+
 <div class="container">
-    <div class="card col-md-6 mt-3">
-        <h2 class="bg-dark text-center text-white border rounded">Logged Out</h2>
-        <h3>
-            Are you sure you want to Login again 
-        </h3><a href="{% url 'login' %}">Login</a>
-    </div>
+	<div class="card">
+		<div class="card-header">
+			<h2>Are you want to Login</h2>
+
+			
+		</div>
+		<div class="card-body">
+			<a href="{% url 'login' %}" class="btn btn-outline-info">LoginAgain</a>
+			
+		</div>
+		
+	</div>
+	
 </div>
+
 {% endblock %}

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from formsapp.forms import Userreg,Updatepro
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def hello(request):
 	return HttpResponse("welcome formsapp")
@@ -16,33 +17,38 @@ def Contact(request):
 	return render(request,'formsapp/contact.html')
 def Home(request):
 	return render(request,'formsapp/home.html')
+
 @login_required
 def dashboard(request):
-	return render(request,'formsapp/dashboard.html')
+	return render(request,"formsapp/dashboard.html")
 @login_required
-def profile(request):
-	return render(request,'formsapp/profile.html')
+def Profile(request):
+	return render(request,"formsapp/profile.html")	
 
-def login(request):
-	return render(request,'formsapp/login.html')
+
+
+# def login(request):
+# 	return render(request,'formsapp/login.html')
 
 def register(request):
 	if request.method=="POST":
 		form=Userreg(request.POST)
 		if form.is_valid():
 			form.save()
-			messages.success(request,"registered successfully")
+			#return HttpResponse("Successfully registered")
+			messages.success(request,"Successfully registered")
 			return redirect('login')
 	form=Userreg()
 	return render(request,'formsapp/register.html',{'form':form})
+
 @login_required
 def updatepro(request):
-	if request.method=='POST':
+	if request.method=="POST":
 		data=Updatepro(request.POST,instance=request.user)
 		if data.is_valid():
 			data.save()
-			messages.success(request,"Updated successfully")
-			return redirect('profile')
+			messages.success(request,'Successfully updated')
+			return redirect('Profile')
 	data=Updatepro(instance=request.user)
-	return render(request,'formsapp/update.html',{'data':data})
+	return render(request,'formsapp/updatepro.html',{'data':data})
 
