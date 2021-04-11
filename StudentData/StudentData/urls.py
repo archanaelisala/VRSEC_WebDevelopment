@@ -37,5 +37,10 @@ urlpatterns = [
     #login and registrations
     path('login/',views.Login),
     path('register/',views.Register),
+
+    #for CRUD operations
+    path('',include('CRUDApp.urls')),
+
+
     path('formsapp/',include('formsapp.urls')),
 ]
